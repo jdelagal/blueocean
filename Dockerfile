@@ -16,7 +16,6 @@ RUN apt-get install --yes build-essential
 
 
 # Install app dependencies
-#RUN cd /src; npm install
 RUN npm install -g apiconnect
 
 # Set environment variables.
