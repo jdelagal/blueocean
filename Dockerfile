@@ -6,14 +6,9 @@
 #
 
 # Pull base image.
-FROM ubuntu:16.04
+FROM dockerfile/ubuntu
 
 # Install Node.js
-RUN apt-get install --yes curl
-RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-RUN apt-get install --yes nodejs
-RUN apt-get install --yes build-essential
-
 
 # Install app dependencies
 RUN npm install -g apiconnect
