@@ -1,14 +1,9 @@
 pipeline {
-  agent {
-    dockerfile {
-      filename 'Dockerfile'
-    }
-    
-  }
+  agent none
   stages {
     stage('build') {
       steps {
-        sh 'echo "ya"'
+        sh 'docker build -t toolkit -f Dockerfile .'
       }
     }
   }
