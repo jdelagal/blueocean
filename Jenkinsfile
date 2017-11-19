@@ -1,8 +1,7 @@
 pipeline {
   agent {
-    docker {
-      image 'jenkinsci/blueocean'
-      args '--network apiconnectdockermaster_ibmnet'
+    dockerfile {
+      filename 'Dockerfile'
     }
     
   }
