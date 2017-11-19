@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Run') {
       steps {
-        sh 'docker run --rm toolkit -ti -d  toolkit bash'
+        sh 'docker run --name toolkit_running -it -d toolkit bash'
       }
     }
   }
