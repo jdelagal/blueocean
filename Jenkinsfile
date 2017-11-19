@@ -16,6 +16,11 @@ pipeline {
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running '
       }
     }
+    stage('Deploy') {
+      steps {
+        sh 'echo "deploy"'
+      }
+    }
     stage('Stop') {
       steps {
         sh 'docker stop toolkit_running'
