@@ -11,5 +11,10 @@ pipeline {
         sh 'docker run --name toolkit_running -it -d toolkit bash'
       }
     }
+    stage('Connect') {
+      steps {
+        sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running '
+      }
+    }
   }
 }
