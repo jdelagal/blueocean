@@ -1,14 +1,14 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
+    stage('Build') {
       steps {
         sh 'docker build -t toolkit -f Dockerfile .'
       }
     }
     stage('Run') {
       steps {
-        sh 'docker run -rm toolkit_running -ti -d  toolkit bash'
+        sh 'docker run --rm toolkit_running -ti -d  toolkit bash'
       }
     }
   }
