@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Run') {
       steps {
-        sh 'docker run --name toolkit_running -it -d toolkit bash'
+        sh 'docker run --name toolkit_running -u root -it -d toolkit bash'
       }
     }
     stage('Connect') {
@@ -21,8 +21,7 @@ pipeline {
         CI = 'true'
       }
       steps {
-        sh './jenkins/scripts/licence.sh yes no'
-        sh './jenkins/scripts/login.sh apim jose.delagala@ust-global.com !n0r1t5@C'
+        sh 'apic yes no'
       }
     }
     stage('Kill') {
