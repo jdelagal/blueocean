@@ -29,7 +29,7 @@ pipeline {
         sh 'docker stop toolkit_running'
         sh '''docker rm toolkit_running
            '''
+      }
     }
   }
-}
 }
