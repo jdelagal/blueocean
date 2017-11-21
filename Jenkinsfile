@@ -18,8 +18,7 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh 'apic'
-        input(message: '(Use arrow keys)', submitter: 'yes')
+        sh 'apic yes no'
       }
     }
     stage('Kill') {
