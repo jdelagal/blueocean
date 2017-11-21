@@ -18,10 +18,8 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh '''chmod 777 /jenkins/scripts/licence.sh
-./jenkins/scripts/licence.sh yes no'''
-        sh '''chmod 777 /jenkins/scripts/login.sh
-./jenkins/scripts/login.sh apim jose.delagala@ust-global.com !n0r1t5@C'''
+        sh './jenkins/scripts/licence.sh yes no'
+        sh './jenkins/scripts/login.sh apim jose.delagala@ust-global.com !n0r1t5@C'
       }
     }
     stage('Kill') {
