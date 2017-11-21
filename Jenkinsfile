@@ -18,8 +18,8 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh 'apic yes no'
-        sh 'apic login apim jose.delagala@ust-global.com !n0r1t5@C'
+        sh 'apic -h'
+        input(message: '(Use arrow keys)', submitter: 'yes')
       }
     }
     stage('Kill') {
