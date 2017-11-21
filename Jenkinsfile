@@ -27,6 +27,8 @@ pipeline {
         sh 'docker stop toolkit_running'
         sh '''docker rm toolkit_running
            '''
+      steps {
+        sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running '
       }
     }
   }
