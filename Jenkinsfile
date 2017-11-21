@@ -18,8 +18,8 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh 'sudo ./jenkins/scripts/licence.sh yes no'
-        sh 'sudo ./jenkins/scripts/login.sh apim jose.delagala@ust-global.com !n0r1t5@C'
+        sh 'apic yes no'
+        sh 'apic login apim jose.delagala@ust-global.com !n0r1t5@C'
       }
     }
     stage('Kill') {
