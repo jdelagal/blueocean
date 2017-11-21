@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Run') {
       steps {
-        sh 'docker run --name toolkit_running -it -d toolkit bash'
+        sh 'docker run --name toolkit_running -u root -it -d toolkit bash'
       }
     }
     stage('Connect') {
@@ -18,8 +18,10 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh './jenkins/scripts/licence.sh yes no'
-        sh './jenkins/scripts/login.sh apim jose.delagala@ust-global.com !n0r1t5@C'
+        sh '''chmod 777 /jenkins/scripts/licence.sh
+./jenkins/scripts/licence.sh yes no'''
+        sh '''chmod 777 /jenkins/scripts/login.sh
+./jenkins/scripts/login.sh apim jose.delagala@ust-global.com !n0r1t5@C'''
       }
     }
     stage('Kill') {
