@@ -21,7 +21,6 @@ pipeline {
         CI = 'true'
       }
       steps {
-        sh 'npm install -g apiconnect'
         sh 'apic yes no'
       }
     }
