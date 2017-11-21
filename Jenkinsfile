@@ -21,10 +21,9 @@ pipeline {
         CI = 'true'
       }
       steps {
-        sh 'apic yes no'
+        sh 'sh apic yes no'
       }
     }
-    
     stage('Kill') {
       steps {
         sh 'docker stop toolkit_running'
