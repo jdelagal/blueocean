@@ -21,7 +21,8 @@ pipeline {
         CI = 'true'
       }
       steps {
-        sh 'sh apic yes no'
+        sh 'npm install -g apiconnect'
+        sh 'apic yes no'
       }
     }
     stage('Kill') {
