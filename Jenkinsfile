@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh 'echo "deploy"'
+        sh 'apic -h'
       }
     }
     stage('Stop') {
