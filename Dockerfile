@@ -39,4 +39,4 @@ ENV HOME /root
 WORKDIR /root
 
 # Define default command.
-CMD ["bash"]
+CMD ["apic"]
