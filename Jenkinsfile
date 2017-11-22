@@ -3,17 +3,17 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t toolkit -f Dockerfile .'
+        sh './jenkins/scripts/build.sh'
       }
     }
     stage('Run') {
       steps {
-        sh 'docker run --name toolkit_running -u root -it -d toolkit bash'
+        sh './jenkins/scripts/run.sh'
       }
     }
     stage('Connect') {
       steps {
-        sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running '
+        sh './jenkins/scripts/connect.sh'
       }
     }
     stage('Deploy') {

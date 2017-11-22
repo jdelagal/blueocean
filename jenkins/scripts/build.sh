@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-docker stop toolkit_running
+docker build -t toolkit -f Dockerfile .
