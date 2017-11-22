@@ -2,6 +2,9 @@ pipeline {
   agent any
   stages {
     stage('Build') {
+      environment {
+        CI = 'true'
+      }
       steps {
         sh './jenkins/scripts/build.sh'
       }
