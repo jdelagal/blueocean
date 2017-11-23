@@ -30,6 +30,8 @@ RUN \
 # Install IBM Toolkit Apiconnect
 RUN npm install -g apiconnect
 
+# Install IBM Toolkit Apiconnect Licencia
+RUN apic yes no
 # Set environment variables.
 ENV HOME /root
 
