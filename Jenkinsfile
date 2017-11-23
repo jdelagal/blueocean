@@ -20,11 +20,15 @@ pipeline {
       }
     }
     stage('Deploy') {
+      def workspace = pwd()
+      echo workspace
       steps {
-        sh 'pwd'
-        sh 'ls -ltr'
-        sh 'chmod 775 script.groovy'
-        sh 'ls -ltr'
+        sh '''
+        pwd'
+        ls -ltr
+        chmod 775 script.groovy
+        ls -ltr
+        '''
       }
     }
     stage('Kill') {
