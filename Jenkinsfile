@@ -1,5 +1,8 @@
 pipeline {
+  def workspace = pwd()
+  echo workspace
   agent any
+  steps {
   stages {
     stage('Build') {
       environment {
@@ -20,9 +23,6 @@ pipeline {
       }
     }
     stage('Deploy') {
-      def workspace = pwd()
-      echo workspace
-      steps {
         sh '''
         pwd'
         ls -ltr
