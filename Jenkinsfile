@@ -22,13 +22,12 @@ pipeline {
     stage('Deploy') {
       steps {
         sh 'pwd'
-        sh 'cd $pwd/jenkins/scripts'
-        sh 'ls -ltr'
-        sh 'chmod 777 *'
+        sh '$pwd/jenkins/scripts chmod 777 *'
+        sh '$pwd/jenkins/scripts ls -ltr'
         sh 'ls -ltr'
       }
     }
-    
+
     stage('Kill') {
       steps {
         sh 'docker stop toolkit_running'
