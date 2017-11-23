@@ -1,6 +1,4 @@
 pipeline {
-  def workspace = pwd()
-  echo workspace
   agent any
   steps {
   stages {
