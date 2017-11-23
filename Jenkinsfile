@@ -17,13 +17,8 @@ pipeline {
     stage('Connect') {
       steps {
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
-<<<<<<< HEAD
         sh 'docker exec -ti toolkit_running bash'
-      } 
-=======
-        sh 'docker exec -ti toolkit_running bash yes no'
       }
->>>>>>> a91118634d0bc5b1f1b0094a429250c27a0a6a7c
     }
     stage('Deploy') {
       steps {
