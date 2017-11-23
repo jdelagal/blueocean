@@ -27,7 +27,6 @@ pipeline {
         sh 'ls -ltr'
       }
     }
-
     stage('Kill') {
       steps {
         sh 'docker stop toolkit_running'
