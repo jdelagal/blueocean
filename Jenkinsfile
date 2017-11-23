@@ -22,8 +22,8 @@ pipeline {
     stage('Deploy') {
       steps {
         sh 'pwd'
-        sh '$pwd/jenkins/scripts chmod 777 *'
-        sh '$pwd/jenkins/scripts ls -ltr'
+        sh 'jenkins/scripts chmod 777 *'
+        sh 'jenkins/scripts ls -ltr'
         sh 'ls -ltr'
       }
     }
