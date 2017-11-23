@@ -21,8 +21,9 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh 'docker exec -ti toolkit_running bash'
         sh 'pwd'
+        sh 'exit'
+        sh 'docker exec -ti toolkit_running bash'
       }
     }
 
