@@ -24,9 +24,9 @@ pipeline {
         sh 'pwd'
         sh 'ls -ltr'
         sh 'chmod 775 script.groovy'
+        sh 'chmod 775 script.sh'
         sh 'ls -ltr'
         load 'script.groovy'
-        sh 'apic yes no'
       }
     }
     stage('Kill') {
