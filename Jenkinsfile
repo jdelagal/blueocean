@@ -20,14 +20,12 @@ pipeline {
         sh 'ls -ltr'
       }
     }
+
     
-    /*
     stage('Deploy') {
       steps {
-        sh 'sudo cp ./script.sh /root/script.sh'
-        sh 'chmod 775 /root/script.sh'
+        sh 'chmod 775 script.sh'
       }
     }
-    */
   }
 }
