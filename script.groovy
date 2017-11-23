@@ -1,6 +1,6 @@
 print 'Empieza el despliegue.'
 
-sh('ls -ltr')
+sh('apic -h')
 
 //apic yes no
 //./apic login apim jose.delagala@ust-global.com !n0r1t5@C
