@@ -25,7 +25,6 @@ pipeline {
         sh 'pwd'
       }
     }
-
     stage('Kill') {
       steps {
         sh 'docker stop toolkit_running'
