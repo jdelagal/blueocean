@@ -28,7 +28,7 @@ RUN \
   sudo apt-get install -y nodejs
 
 # Install IBM Toolkit Apiconnect
-RUN npm install -g apiconnect apic -h
+RUN npm install -g apiconnect
 
 # Install IBM Toolkit Apiconnect Licencia
 # Set environment variables.
