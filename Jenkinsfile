@@ -20,7 +20,7 @@ pipeline {
         sh 'ls -ltr'
       }
     }
-    /*
+    
     stage('Deploy') {
       steps {
         sh 'pwd'
@@ -32,6 +32,6 @@ pipeline {
         sh 'ls -ltr'
       }
       
-    }*/
+    }
   }
 }
