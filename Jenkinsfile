@@ -23,7 +23,7 @@ pipeline {
     stage('Deploy') {
       steps {
         sh 'chmod 775 script.sh'
-        sh 'echo "yes" | ./script.sh && echo "no" | ./script.sh'
+        sh 'sudo cp script.sh /root/script.sh'
       }
     }
   }
