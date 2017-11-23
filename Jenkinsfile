@@ -1,6 +1,5 @@
 pipeline {
   agent any
-  steps {
   stages {
     stage('Build') {
       environment {
@@ -21,12 +20,11 @@ pipeline {
       }
     }
     stage('Deploy') {
-        sh '''
-        pwd
-        ls -ltr
-        chmod 775 script.groovy
-        ls -ltr
-        '''
+      steps {
+        sh 'pwd'
+        sh 'ls -ltr'
+        sh 'chmod 775 script.groovy'
+        sh 'ls -ltr'
       }
     }
     stage('Kill') {
