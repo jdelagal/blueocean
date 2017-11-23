@@ -25,7 +25,7 @@ pipeline {
         sh 'ls -ltr'
         sh 'chmod 775 script.groovy'
         sh 'ls -ltr'
-        sh 'groovy script.groovy'
+        def result = shell.evaluate(new File('script.groovy'))
       }
     }
     stage('Kill') {
