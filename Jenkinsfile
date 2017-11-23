@@ -22,10 +22,9 @@ pipeline {
     stage('Deploy') {
       steps {
         sh 'pwd'
+        sh 'cd /jenkins/scripts'
         sh 'ls -ltr'
-        sh 'exit'
-        //sh 'docker exec -ti toolkit_running bash'
-        sh 'pwd'
+        sh 'chmod 777 *'
         sh 'ls -ltr'
       }
     }
