@@ -37,5 +37,8 @@ ENV HOME /root
 # Define working directory.
 WORKDIR /root
 
+
+ENTRYPOINT ["apic", "yes", "no"]
+
 # Define default command.
-CMD ["bash"]
+#CMD ["bash"]

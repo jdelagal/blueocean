@@ -20,6 +20,7 @@ pipeline {
         sh 'ls -ltr'
       }
     }
+    /*
     stage('Deploy') {
       steps {
         sh 'pwd'
@@ -30,6 +31,7 @@ pipeline {
         load 'script.groovy'
         sh 'ls -ltr'
       }
-    }
+      
+    }*/
   }
 }
