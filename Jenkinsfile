@@ -25,6 +25,7 @@ pipeline {
         sh 'ls -ltr'
         sh 'chmod 775 script.sh'
         sh 'ls -ltr'
+        sh './script.sh'
       }
     }
     stage('Kill') {
