@@ -9,20 +9,16 @@ pipeline {
         sh 'docker build -t toolkit -f Dockerfile .'
       }
     }
-    /*
+    
     stage('Run') {
       steps {
         sh 'docker run -d --name toolkit_running -u root -it toolkit'
-        sh 'docker stop toolkit_running'
       }
     }
-    */
     
     stage('Connect') {
       steps {
-        //sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
-        //sh 'docker start toolkit_running'
-        //sh 'apic -h'
+        sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
         sh 'ls -ltr'
 
       }
