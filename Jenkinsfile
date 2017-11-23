@@ -20,7 +20,6 @@ pipeline {
         sh 'ls -ltr'
       }
     }
-    
     stage('Deploy') {
       steps {
         sh 'sudo cp script.sh /root/script.sh'
