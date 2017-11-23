@@ -11,7 +11,8 @@ pipeline {
     }
     stage('Run') {
       steps {
-        sh 'docker run --name toolkit_running -u root -it -d toolkit'
+        sh 'docker run -d --name toolkit_running -u root -it toolkit'
+        sh 'docker exec -ti toolkit_running bash ls'   
       }
     }
     stage('Connect') {
@@ -28,7 +29,6 @@ pipeline {
         sh './script.sh'
       }
     }
-    /*
     stage('Kill') {
       steps {
         sh 'docker stop toolkit_running'
@@ -36,6 +36,5 @@ pipeline {
            '''
       }
     }
-    */
   }
 }
