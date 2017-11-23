@@ -22,8 +22,11 @@ pipeline {
     stage('Deploy') {
       steps {
         sh 'pwd'
+        sh 'ls -ltr'
         sh 'exit'
-        sh 'docker exec -ti toolkit_running bash'
+        //sh 'docker exec -ti toolkit_running bash'
+        sh 'pwd'
+        sh 'ls -ltr'
       }
     }
     stage('Kill') {
