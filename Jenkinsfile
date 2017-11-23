@@ -12,12 +12,12 @@ pipeline {
     stage('Run') {
       steps {
         sh 'docker run -d --name toolkit_running -u root -it toolkit'
-        sh 'docker exec -ti toolkit_running bash ls'   
       }
     }
     stage('Connect') {
       steps {
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
+        sh 'apic -h'
       }
     }
     stage('Deploy') {
