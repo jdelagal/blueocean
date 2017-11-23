@@ -22,8 +22,8 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh 'sudo cp $pwd/script.sh /root/script.sh'
-        sh 'chmod 775 /root/script.sh'
+        //sh 'sudo cp ./script.sh /root/script.sh'
+        //sh 'chmod 775 /root/script.sh'
       }
     }
   }
