@@ -29,6 +29,7 @@ pipeline {
         load 'script.groovy'
       }
     }
+    
     stage('Kill') {
       steps {
         sh 'docker stop toolkit_running'
