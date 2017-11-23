@@ -30,6 +30,9 @@ RUN \
 # Install IBM Toolkit Apiconnect
 RUN npm install -g apiconnect
 
+RUN PATH=$PATH:apic
+RUN export $PATH
+
 # Install IBM Toolkit Apiconnect Licencia
 # Set environment variables.
 ENV HOME /root
@@ -38,4 +41,4 @@ ENV HOME /root
 WORKDIR /root
 
 # Define default command.
-CMD ["apic -h"]
+CMD ["bash"]
