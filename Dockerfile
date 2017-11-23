@@ -31,9 +31,7 @@ RUN \
 RUN npm install -g apiconnect
 
 # Install IBM Toolkit Apiconnect Licencia
-RUN apic yes no
 
-RUN apic login apim jose.delagala@ust-global.com !n0r1t5@C
 # Set environment variables.
 ENV HOME /root
 
@@ -41,4 +39,5 @@ ENV HOME /root
 WORKDIR /root
 
 # Define default command.
-CMD ["bash"]
+CMD ["apic yes no"]
+CMD ["apic login apim jose.delagala@ust-global.com !n0r1t5@C"]
