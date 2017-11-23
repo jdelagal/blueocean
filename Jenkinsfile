@@ -17,7 +17,6 @@ pipeline {
     stage('Connect') {
       steps {
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
-        sh 'apic -h'
       }
     }
     stage('Deploy') {
@@ -26,7 +25,7 @@ pipeline {
         sh 'ls -ltr'
         sh 'chmod 775 script.sh'
         sh 'ls -ltr'
-        sh './script.sh'
+        sh './script.groovy'
       }
     }
     stage('Kill') {
