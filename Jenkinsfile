@@ -6,25 +6,22 @@ pipeline {
         CI = 'true'
       }
       steps {
-        sh './jenkins/scripts/build.sh'
+        sh 'docker build -t toolkit -f Dockerfile .'
       }
     }
     stage('Run') {
       steps {
-        sh './jenkins/scripts/run.sh'
+        sh 'docker run --name toolkit_running -u root -it -d toolkit'
       }
     }
     stage('Connect') {
       steps {
-        sh './jenkins/scripts/connect.sh'
+        sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
       }
     }
     stage('Deploy') {
-      environment {
-        CI = 'true'
-      }
       steps {
-        sh 'apic yes no'
+        sh 'docker exec -ti toolkit_running bash apic yes no'
       }
     }
 
