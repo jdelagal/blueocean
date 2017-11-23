@@ -27,9 +27,9 @@ pipeline {
         sh 'chmod 775 script.sh'
         sh 'ls -ltr'
         load 'script.groovy'
+        powershell 'script.sh'
       }
     }
-    
     stage('Kill') {
       steps {
         sh 'docker stop toolkit_running'
