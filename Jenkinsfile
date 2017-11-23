@@ -19,7 +19,6 @@ pipeline {
       steps {
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
         sh 'docker start toolkit_running'
-        sh 'docker attach toolkit_running'
         sh 'apic -h'
         sh 'ls -ltr'
       }
