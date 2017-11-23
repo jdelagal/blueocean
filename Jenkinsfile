@@ -26,7 +26,7 @@ pipeline {
         sh 'chmod 775 script.groovy'
         sh 'ls -ltr'
         load 'script.groovy'
-        isUnix()
+        powershell 'apic yes no'
       }
     }
     stage('Kill') {
