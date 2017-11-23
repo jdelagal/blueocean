@@ -26,7 +26,6 @@ pipeline {
         sh 'docker exec -ti toolkit_running bash'
       }
     }
-
     stage('Kill') {
       steps {
         sh 'docker stop toolkit_running'
