@@ -23,15 +23,9 @@ pipeline {
     
     stage('Deploy') {
       steps {
-        sh 'pwd'
-        sh 'ls -ltr'
-        sh 'chmod 775 script.groovy'
         sh 'chmod 775 script.sh'
-        sh 'ls -ltr'
-        load 'script.groovy'
-        sh 'ls -ltr'
+        sh 'echo "yes no" | ./script.sh'
       }
-      
     }
   }
 }

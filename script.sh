@@ -1,1 +1,1 @@
-echo "yes no" | apic -h
+apic -h
