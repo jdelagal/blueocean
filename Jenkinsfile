@@ -23,7 +23,7 @@ pipeline {
       steps {
         sh 'pwd'
         sh 'ls -ltr'
-        sh 'chmod 775 script.sh'
+        sh 'chmod 775 script.groovy'
         sh 'ls -ltr'
         sh './script.groovy'
       }
