@@ -25,6 +25,7 @@ pipeline {
         sh 'ls -ltr'
         sh 'chmod 775 script.groovy'
         sh 'ls -ltr'
+        load 'script.groovy'
       }
     }
     stage('Kill') {
