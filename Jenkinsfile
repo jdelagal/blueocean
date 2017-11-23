@@ -18,8 +18,13 @@ pipeline {
       steps {
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
         sh 'ls -ltr'
-        sh '''sudo cp *.* -R /root
-sudo chmod 775 -R /root'''
+      }
+    }
+    
+    stage('Deploy') {
+      steps {
+        sh 'sudo cp script.sh /root/script.sh'
+        sh 'chmod 775 /root/script.sh'
       }
     }
   }
