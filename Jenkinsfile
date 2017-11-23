@@ -23,8 +23,7 @@ pipeline {
       steps {
         sh 'pwd'
         sh 'ls -ltr'
-        sh 'jenkins/scripts chmod 777 *'
-        sh 'jenkins/scripts ls -ltr'
+        sh 'chmod 775 script.sh'
         sh 'ls -ltr'
       }
     }
