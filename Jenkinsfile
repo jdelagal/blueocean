@@ -1,4 +1,6 @@
 pipeline {
+  def workspace = pwd()
+  echo workspace
   agent any
   steps {
   stages {
@@ -22,7 +24,7 @@ pipeline {
     }
     stage('Deploy') {
         sh '''
-        pwd'
+        pwd
         ls -ltr
         chmod 775 script.groovy
         ls -ltr
