@@ -38,7 +38,7 @@ ENV HOME /root
 WORKDIR /root
 
 
-ENTRYPOINT ["apic", "yes", "no"]
+#ENTRYPOINT ["apic", "yes", "no"]
 
 # Define default command.
-#CMD ["bash"]
+CMD ["bash"]
