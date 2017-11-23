@@ -28,6 +28,7 @@ pipeline {
         sh './script.sh'
       }
     }
+    /*
     stage('Kill') {
       steps {
         sh 'docker stop toolkit_running'
@@ -35,5 +36,6 @@ pipeline {
            '''
       }
     }
+    */
   }
 }
