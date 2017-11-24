@@ -29,7 +29,7 @@ pipeline {
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
         sh 'ls -ltr'
         sh 'pwd'
-        sleep 300
+        sleep 600
       }
     }
     stage('Kill') {
