@@ -16,10 +16,9 @@ pipeline {
     }
     stage('Prepare') {
       steps {
-        sh 'docker cp scrip t.sh toolkit_running:/root'
+        sh 'docker cp script.sh toolkit_running:/root/deploy'
         sh 'docker exec -i toolkit_running bash'
         sh 'chmod 775 script.sh'
-        sh 'mkdir /root/deploy'
         sh 'ls -ltr'
       }
     }
