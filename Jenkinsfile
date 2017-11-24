@@ -14,6 +14,15 @@ pipeline {
         sh 'docker run -d --name toolkit_running -u root -it toolkit'
       }
     }
+    stage('Prepare') {
+      steps {
+        sh 'docker cp script.sh toolkit_running:/root'
+        sh 'docker exec -i toolkit_running bash'
+        sh 'chmod 775 script.sh'
+        sh 'mkdir deploy'
+        sh 'ls -ltr'
+      }
+    }
     stage('Connect') {
       steps {
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
