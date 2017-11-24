@@ -19,9 +19,9 @@ pipeline {
         sh 'docker cp script.sh toolkit_running:/root'
         sh 'docker exec -i toolkit_running bash'
         sh 'chmod 775 script.sh'
-        sh 'mkdir /root/deploy'
-        sh 'chmod 775 /root/deploy'
-        sh 'mv script.sh /root/deploy/script.sh'
+        sh 'mkdir deploy'
+        sh 'chmod 775 deploy'
+        sh 'mv script.sh deploy/script.sh'
         sh 'ls -ltr'
       }
     }
