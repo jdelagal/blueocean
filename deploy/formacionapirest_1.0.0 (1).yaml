@@ -1,0 +1,355 @@
+---
+swagger: "2.0"
+info:
+  x-ibm-name: "formacionapirest"
+  title: "FormacionAPI_REST"
+  version: "1.0.0"
+  description: "Gets building data, including directions"
+  contact:
+    name: "Formación API"
+    email: "formacion.api@tcpsi.es"
+schemes:
+- "https"
+host: "$(catalog.host)"
+basePath: "/rest"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+securityDefinitions:
+  clientIdHeader:
+    type: "apiKey"
+    in: "header"
+    name: "X-IBM-Client-Id"
+security:
+- clientIdHeader: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  assembly:
+    execute:
+    - proxy:
+        title: "proxy"
+        timeout: 60
+        verb: "GET"
+        cache-response: "protocol"
+        cache-ttl: 900
+        target-url: "$(target-url)?user_id=XI322135"
+        output: "restOut"
+    - map:
+        title: "map"
+        inputs:
+          body:
+            schema:
+              $schema: "http://json-schema.org/draft-04/schema#"
+              description: ""
+              type: "object"
+              properties:
+                return:
+                  type: "object"
+                  properties:
+                    result:
+                      type: "string"
+                      name: "result"
+                    error_code:
+                      type: "string"
+                      name: "error_code"
+                    building_list:
+                      type: "array"
+                      items:
+                        properties:
+                          bl_id:
+                            type: "string"
+                            name: "bl_id"
+                          bl_name:
+                            type: "string"
+                            name: "bl_name"
+                          country_id:
+                            type: "string"
+                            name: "country_id"
+                          country_name:
+                            type: "string"
+                            name: "country_name"
+                          region_id:
+                            type: "string"
+                            name: "region_id"
+                          region_name:
+                            type: "string"
+                            name: "region_name"
+                          state_id:
+                            type: "string"
+                            name: "state_id"
+                          state_name:
+                            type: "string"
+                            name: "state_name"
+                          city_id:
+                            type: "string"
+                            name: "city_id"
+                          city_name:
+                            type: "string"
+                            name: "city_name"
+                          site_id:
+                            type: "string"
+                            name: "site_id"
+                          address1:
+                            type: "string"
+                            name: "address1"
+                          address2:
+                            type: "string"
+                            name: "address2"
+                          zip:
+                            type: "string"
+                            name: "zip"
+                          lon:
+                            type: "number"
+                            name: "lon"
+                          lan:
+                            type: "number"
+                            name: "lan"
+                      name: "building_list"
+                  name: "return"
+              example: "{\r\n\t\"return\": {\r\n\t\t\"result\": \"true\",\r\n\t\t\"\
+                error_code\": \"0\",\r\n\t\t\"building_list\": [\r\n\t\t\t{\r\n\t\t\
+                \t\t\"bl_id\": \"ES.BOA.AL\",\r\n\t\t\t\t\"bl_name\": \"ALHAMBRA\"\
+                ,\r\n\t\t\t\t\"country_id\": \"ESP\",\r\n\t\t\t\t\"country_name\"\
+                : \"España\",\r\n\t\t\t\t\"region_id\": \"M\",\r\n\t\t\t\t\"region_name\"\
+                : \"Comunidad de Madrid\",\r\n\t\t\t\t\"state_id\": \"ES.M\",\r\n\t\
+                \t\t\t\"state_name\": \"Madrid\",\r\n\t\t\t\t\"city_id\": \"ES.BOA\"\
+                ,\r\n\t\t\t\t\"city_name\": \"Boadilla del Monte\",\r\n\t\t\t\t\"\
+                site_id\": \"C.A.M.\",\r\n\t\t\t\t\"address1\": \"Avda. de Cantabria,\
+                \ S/N\",\r\n\t\t\t\t\"address2\": \"BOADILLA DEL MONTE (MADRID)\"\
+                ,\r\n\t\t\t\t\"zip\": \"28660\",\r\n\t\t\t\t\"lon\":0,\r\n\t\t\t\t\
+                \"lan\":0\r\n\t\t\t}\r\n\t\t]\r\n\t}\r\n}"
+              title: "body"
+            variable: "restOut.body"
+            content: "application/json"
+        outputs:
+          buildings:
+            schema:
+              $ref: "#/definitions/buildings"
+            variable: "message.body.buildings"
+            content: "application/json"
+        actions:
+        - create: "buildings"
+          from: "body.return.building_list"
+          foreach: "body.return.building_list"
+          actions:
+          - set: "buildingId"
+            from: "bl_id"
+          - set: "name"
+            from: "bl_name"
+          - set: "address.country"
+            from: "country_name"
+          - set: "address.region"
+            from: "region_name"
+          - set: "address.state"
+            from: "state_name"
+          - set: "address.location"
+            from: "city_name"
+          - set: "address.site"
+            from: "site_id"
+          - set: "address.street1"
+            from: "address1"
+          - set: "address.street2"
+            from: "address2"
+          - set: "address.postalCode"
+            from: "zip"
+          - set: "address.latitude"
+            from: "lon"
+          - set: "address.longitude"
+            from: "lan"
+    catch: []
+  phase: "realized"
+  properties:
+    target-url:
+      value: "http://180.106.39.99:8089/archibus/cxf/ReservesRm"
+      description: "Endpoint del servicio de mediación BW que realiza la petición\
+        \ al servicio backend Archibus"
+      encoded: false
+  catalogs:
+    DEV:
+      properties:
+        target-url: "http://180.106.39.25:8089/archibus/cxf/ReservesRm"
+paths:
+  /buildings:
+    get:
+      responses:
+        200:
+          description: "200 OK"
+          schema:
+            $ref: "#/definitions/buildings"
+        401:
+          description: "Not Authorized"
+          schema:
+            $ref: "#/definitions/errors"
+        403:
+          description: "Forbidden"
+          schema:
+            $ref: "#/definitions/errors"
+        500:
+          description: "Internal server error"
+          schema:
+            $ref: "#/definitions/errors"
+      operationId: "get_buildings"
+      summary: "Gets a Building data list"
+      description: "This operation expects Oauth token ClientId and userId in the\
+        \ header autorization. \nIf the operation is succesfull executed, a list of\
+        \ buildings is displayed filter by country."
+      parameters:
+      - name: "country"
+        type: "string"
+        required: true
+        in: "query"
+        description: "Building country"
+      - name: "building"
+        type: "string"
+        required: false
+        in: "query"
+        description: "Building id"
+    parameters:
+    - $ref: "#/parameters/Accept-Language"
+    - $ref: "#/parameters/Authorization"
+    - $ref: "#/parameters/Global-Id"
+    - $ref: "#/parameters/Device"
+    - $ref: "#/parameters/Channel"
+definitions:
+  error:
+    properties:
+      code:
+        type: "string"
+        description: "Unique alphanumeric human readable error code"
+      message:
+        type: "string"
+        description: "Brief summary of issue reported"
+      level:
+        type: "string"
+        description: "Different issue level: info, warning, error"
+      description:
+        type: "string"
+        description: "Detailed description of the issue reported"
+    additionalProperties: false
+    description: "Exception information"
+    required:
+    - "message"
+    - "code"
+  errors:
+    description: "List of exceptions"
+    type: "array"
+    items:
+      $ref: "#/definitions/error"
+  address:
+    properties:
+      country:
+        type: "string"
+        description: "Building country"
+        example: "ESP"
+      region:
+        type: "string"
+        description: "Building region"
+        example: "Comunidad de Madrid"
+      state:
+        type: "string"
+        description: "Building state"
+        example: "Madrid"
+      location:
+        type: "string"
+        description: "Building location"
+        example: "Boadilla del Monte"
+      site:
+        type: "string"
+        description: "Building site"
+        example: "Comunidad Autonoma de Madrid"
+      street1:
+        type: "string"
+        description: "Building street line 1"
+        example: "Avda. de Cantabria, S/N"
+      street2:
+        type: "string"
+        description: "Building street line 2"
+        example: "BOADILLA DEL MONTE (MADRID)"
+      postalCode:
+        type: "string"
+        description: "Building postal code"
+        example: "28660"
+      latitude:
+        type: "number"
+        description: "Building latitude"
+        format: "float"
+        example: 40.3957876
+      longitude:
+        type: "number"
+        description: "Building longitude"
+        format: "float"
+        example: -3.8633688
+    additionalProperties: false
+    description: "Building address information"
+    required:
+    - "longitude"
+    - "latitude"
+    - "postalCode"
+    - "street1"
+    - "street2"
+    - "site"
+    - "location"
+    - "state"
+    - "region"
+    - "country"
+  building:
+    additionalProperties: false
+    description: "Building information"
+    properties:
+      buildingId:
+        type: "string"
+        description: "Building identifyer"
+        example: "1"
+      name:
+        type: "string"
+        description: "Building name"
+        example: "ALHAMBRA"
+      address:
+        $ref: "#/definitions/address"
+    required:
+    - "address"
+    - "name"
+    - "buildingId"
+  buildings:
+    description: "List of buildings"
+    type: "array"
+    items:
+      $ref: "#/definitions/building"
+tags: []
+parameters:
+  Accept-Language:
+    name: "Accept-Language"
+    type: "string"
+    required: true
+    in: "header"
+    description: "Language of the request"
+  Authorization:
+    name: "Authorization"
+    type: "string"
+    required: true
+    in: "header"
+    description: "Bearer Token. A security token with the property that any party\
+      \ in possession of the token (a \"bearer\") can use the token in any way that\
+      \ any other party in possession of it can"
+  Global-Id:
+    name: "Global-Id"
+    type: "string"
+    required: true
+    in: "header"
+    description: "E2E traceability between front and Backend"
+  Device:
+    name: "Device"
+    type: "string"
+    required: true
+    in: "header"
+    description: "Permitted Device Information"
+  Channel:
+    name: "Channel"
+    type: "string"
+    required: true
+    in: "header"
+    description: "Identifies the consumption channel"
