@@ -19,7 +19,7 @@ pipeline {
         sh 'docker cp deploy toolkit_running:/root'
         sh 'docker cp script.sh toolkit_running:/root'
         sh 'docker exec -i -u root toolkit_running bash '
-        sh 'chmod 775 script.sh'
+        sh 'chmod 775 /root/script.sh'
         sh 'docker exec -i -u root toolkit_running bash -c /root/script.sh'
       }
     }
