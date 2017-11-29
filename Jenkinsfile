@@ -16,7 +16,7 @@ pipeline {
     }
     stage('Prepare') {
       steps {
-        sh 'docker exec -i -u root toolkit_running bash -c /root/script.sh'
+        sh 'echo "prepare"'
       }
     }
     stage('Connect') {
@@ -24,7 +24,6 @@ pipeline {
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
         sh 'ls -ltr'
         sh 'pwd'
-        sleep 600
       }
     }
     stage('Kill') {
