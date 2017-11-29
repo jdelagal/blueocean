@@ -23,6 +23,7 @@ ADD root/.gitconfig /root/.gitconfig
 ADD root/.scripts /root/.scripts
 ADD deploy /root/deploy
 ADD root/script.sh /root/script.sh
+ADD root/.netrc /root/.netrc
 
 
 # Install Node
@@ -34,6 +35,7 @@ RUN \
 RUN npm install -g apiconnect
 
 RUN chmod +x /root/script.sh
+RUN chmod 777 /root/.netrc
 
 # Install IBM Toolkit Apiconnect Licencia
 # Set environment variables.
