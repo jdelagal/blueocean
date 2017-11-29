@@ -30,7 +30,7 @@ RUN \
 # Install IBM Toolkit Apiconnect
 RUN npm install -g apiconnect
 
-RUN chmod 775 /root/script.sh
+RUN chmod +x /root/script.sh
 
 # Install IBM Toolkit Apiconnect Licencia
 # Set environment variables.
