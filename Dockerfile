@@ -24,6 +24,7 @@ ADD root/.scripts /root/.scripts
 ADD deploy /root/deploy
 ADD root/script.sh /root/script.sh
 
+
 # Install Node
 RUN \
   curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - && \
