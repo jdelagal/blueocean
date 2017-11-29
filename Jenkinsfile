@@ -5,7 +5,6 @@ pipeline {
       environment {
         CI = 'true'
       }
-      
       steps {
         sh 'docker build -t toolkit -f Dockerfile .'
       }
