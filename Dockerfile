@@ -21,7 +21,7 @@ RUN \
 ADD root/.bashrc /root/.bashrc
 ADD root/.gitconfig /root/.gitconfig
 ADD root/.scripts /root/.scripts
-ADD root/deploy /root/deploy
+ADD deploy /root/deploy
 ADD root/script.sh /root/script.sh
 
 # Install Node
