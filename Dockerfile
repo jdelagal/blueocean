@@ -35,7 +35,7 @@ RUN \
 RUN npm install -g apiconnect
 
 RUN chmod +x /root/script.sh
-RUN chmod 777 /root/.netrc
+RUN chmod 600 /root/.netrc
 
 # Install IBM Toolkit Apiconnect Licencia
 # Set environment variables.
