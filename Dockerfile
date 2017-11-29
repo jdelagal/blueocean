@@ -41,6 +41,7 @@ ENV HOME /root
 
 # Define working directory.
 WORKDIR /root
+RUN bash -x script.sh
 
 #ENTRYPOINT ["apic", "yes", "no"]
 
