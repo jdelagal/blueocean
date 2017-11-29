@@ -18,9 +18,9 @@ pipeline {
       steps {
         sh 'docker cp deploy toolkit_running:/root'
         sh 'docker cp script.sh toolkit_running:/root'
-        sh 'docker exec -i toolkit_running bash'
+        sh 'docker exec -i -u root toolkit_running bash'
         sh 'chmod 775 script.sh'
-        sh 'ls -ltr'
+        sh './script.sh'
       }
     }
     stage('Connect') {
