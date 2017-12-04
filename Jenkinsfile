@@ -19,7 +19,7 @@ pipeline {
         sh 'echo "prepare"'
       }
     }
-    
+
     stage('Connect') {
       steps {
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
@@ -28,6 +28,7 @@ pipeline {
         sh 'pwd'
       }
     }
+    
     stage('Kill') {
       steps {
         sh 'docker stop toolkit_running'
