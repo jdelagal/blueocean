@@ -29,7 +29,7 @@ pipeline {
     }
     stage('Kill') {
       steps {
-        sh 'docker sto toolkit_running'
+        sh 'docker stot toolkit_running'
         sh 'docker rm toolkit_running'
       }
     }
