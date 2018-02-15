@@ -1,0 +1,25 @@
+---
+product: "1.0.0"
+info:
+  name: "productorest"
+  title: "ProductoREST"
+  version: "1.0.0"
+visibility:
+  view:
+    enabled: true
+    type: "public"
+    tags: [visibilidad]
+    orgs: [visibilidad]
+  subscribe:
+    enabled: true
+    type: "authenticated"
+    tags: [visibilidad]
+    orgs: [visibilidad]
+apis:
+  formacionapirest:
+    $ref: "formacionapirest_1.0.0.yaml"
+plans:
+  Default:
+    title: "Plan predeterminado"
+    apis:
+      formacionapirest: {}
