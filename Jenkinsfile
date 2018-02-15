@@ -1,13 +1,5 @@
 pipeline {
   agent any
-  properties([
-    parameters([
-      string(name: 'mybranch', defaultValue: 'undefined')
-    ])
-  ])
-  println "Hello from the shebang line"
-  println "####Printing parameter:"
-  echo "mybranch = ${mybranch}"
   stages {
     stage('Build') {
       environment {
@@ -29,6 +21,14 @@ pipeline {
     }
     stage('Connect') {
       steps {
+        properties([
+          parameters([
+            string(name: 'mybranch', defaultValue: 'undefined')
+          ])
+        ])
+        println "Hello from the shebang line"
+        println "####Printing parameter:"
+        echo "mybranch = ${mybranch}"
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
         sh 'docker exec -i toolkit_running bash -c ./script.sh'
         sh 'ls -ltr'
