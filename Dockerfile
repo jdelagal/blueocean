@@ -48,5 +48,6 @@ WORKDIR /root
 
 #ENTRYPOINT ["apic", "yes", "no"]
 
+
 # Define default command.
 CMD ["bash"]
