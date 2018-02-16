@@ -1,13 +1,17 @@
 pipeline {
   agent any
-  parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-  }
-  
+  properties([
+    parameters([
+      string(name: 'mybranch', defaultValue: 'undefined')
+    ])
+  ])
+
   stages {
     stage('Example') {
       steps {
-        echo "Hello ${params.PERSON}"
+        println "Hello from the shebang line"
+        println "####Printing parameter:"
+        echo "mybranch = ${mybranch}"
       }
     }
     stage('Build') {
