@@ -1,15 +1,6 @@
 pipeline {
   agent any
-  parameters {
-    string(name: 'PERSON')
-  }
-
   stages {
-    stage('Example') {
-      steps {
-         echo "Hello ..."
-      }
-    }
     stage('Build') {
       environment {
         CI = 'true'
