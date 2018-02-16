@@ -8,7 +8,6 @@ pipeline {
     stage('Example') {
       steps {
          echo "Hello ${params.PERSON}"
-         echo "Hello ${hello}" 
       }
     }
     stage('Build') {
