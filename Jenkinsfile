@@ -1,11 +1,10 @@
 pipeline {
   agent any
 
-  
   stages {
     stage('Example') {
       steps {
-        echo "Hello ${params.PERSON}"
+        echo "Hello ${params.id}"
       }
     }
     stage('Build') {
