@@ -1,13 +1,10 @@
 pipeline {
   agent any
-  parameters {
-        string(name: 'id', description: 'Who should I say hello to?')
-  }
 
   stages {
     stage('Example') {
       steps {
-        echo "Hello ${hello}"
+        echo "Hello ${param.hello}"
       }
     }
     stage('Build') {
