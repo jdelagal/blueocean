@@ -1,13 +1,9 @@
 pipeline {
   agent any
-  parameters {
-    string(name: 'PERSON')
-  }
-
   stages {
     stage('Example') {
       steps {
-         echo "Hello ${params.PERSON}"
+        echo "Hello ${params.PERSON}"
       }
     }
     stage('Build') {
@@ -42,5 +38,8 @@ pipeline {
         sh 'docker rm toolkit_running'
       }
     }
+  }
+  parameters {
+    string(name: 'PERSON')
   }
 }
