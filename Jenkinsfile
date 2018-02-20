@@ -12,6 +12,11 @@ pipeline {
         sh 'docker build -t toolkit -f Dockerfile .'
       }
     }
+    stage("Param") {
+      steps {
+        echo "Visibilidad: ${params.visibilidad}"
+      }
+    }
     stage('Run') {
       steps {
         sh 'docker run -d --name toolkit_running -u root -it toolkit'
