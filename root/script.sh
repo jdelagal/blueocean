@@ -1,6 +1,5 @@
 echo "yes" | apic && echo "no" | apic
 
-paramVisibilidad = $1
 
 echo "Visibilidad: $paramVisibilidad"
 
