@@ -1,8 +1,11 @@
 echo "yes" | apic && echo "no" | apic
 
-sed -i 's/visibilidad/$1/g' deploy/prodplantilla.yaml
+paramVisibilidad = $1
+echo "visibilidad: $paramVisibilidad"
 
-apic publish deploy/prodplantilla.yaml --server apim --organization $1 --catalog sb
+sed -i 's/visibilidad/$paramVisibilidad/g' deploy/prodplantilla.yaml
+
+apic publish deploy/prodplantilla.yaml --server apim --organization $paramVisibilidad --catalog sb
 #apic drafts:push deploy/formacionapirest_1.0.0.yaml --server apim --organization factoriaustglobal
 
 #apic login << EOF
