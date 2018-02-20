@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  parameters {
+    string(defaultValue: false, description: '', name: 'visibilidad')
+  }
   stages {
     stage('Build') {
       environment {
