@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  parameters {
-    string(defaultValue: 'false', description: '', name: 'visibilidad')
-  }
   stages {
     stage('Build') {
       environment {
@@ -12,7 +9,7 @@ pipeline {
         sh 'docker build -t toolkit -f Dockerfile .'
       }
     }
-    stage("Param") {
+    stage('Param') {
       steps {
         echo "Visibilidad: ${params.visibilidad}"
       }
@@ -37,9 +34,12 @@ pipeline {
     }
     stage('Kill') {
       steps {
-        sh 'docker stop toolkit_running'
+        sh 'docker sto toolkit_running'
         sh 'docker rm toolkit_running'
       }
     }
+  }
+  parameters {
+    string(defaultValue: 'false', description: '', name: 'visibilidad')
   }
 }
