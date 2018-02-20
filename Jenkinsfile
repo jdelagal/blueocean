@@ -24,10 +24,11 @@ pipeline {
         sh 'echo "prepare"'
       }
     }
+
     stage('Connect') {
       steps {
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
-        sh 'docker exec -i toolkit_running bash -c "./script.sh | paramVisibilidad =${params.visibilidad}"'
+        sh 'docker exec -i toolkit_running bash script.sh ${params.visibilidad}'
         sh 'ls -ltr'
         sh 'pwd'
       }

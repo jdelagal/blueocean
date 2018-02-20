@@ -50,4 +50,4 @@ WORKDIR /root
 
 
 # Define default command.
-CMD ["bash"]
+CMD ["bash", script.sh ]
