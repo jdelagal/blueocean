@@ -1,7 +1,6 @@
 echo "yes" | apic && echo "no" | apic
 
-paramVisibilidad = $2
-echo "visibilidad: $paramVisibilidad"
+echo "Visibilidad: $paramVisibilidad"
 
 sed -i 's/visibilidad/$paramVisibilidad/g' deploy/prodplantilla.yaml
 
