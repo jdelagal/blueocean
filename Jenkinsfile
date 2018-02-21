@@ -28,7 +28,7 @@ pipeline {
       steps {
         echo "Visibilidad: ${params.visibilidad}"
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
-        sh 'docker exec -i toolkit_running bash -c "./script.sh factoriaustglobal"'
+        sh 'docker exec -i toolkit_running bash -c "./script.sh '${params.visibilidad}'"'
         sh 'ls -ltr'
         sh 'pwd'
       }
