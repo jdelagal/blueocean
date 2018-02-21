@@ -1,7 +1,7 @@
 echo "yes" | apic && echo "no" | apic
 
 
-echo "Visibilidad: $paramVisibilidad"
+echo "Visibilidad: $1"
 
 sed -i 's/visibilidad/factoriaustglobal/g' deploy/prodplantilla.yaml
 
