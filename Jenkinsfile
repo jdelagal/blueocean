@@ -1,5 +1,6 @@
 pipeline {
   agent any
+  def pVisi = ${params.visibilidad}
   stages {
     stage('Build') {
       environment {
@@ -25,7 +26,6 @@ pipeline {
       }
     }
     stage('Connect') {
-      def pVisibilidad = ${params.visibilidad}"
       steps {
         echo "Visibilidad: ${params.visibilidad}"
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
