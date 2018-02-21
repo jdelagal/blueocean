@@ -22,14 +22,12 @@ pipeline {
     stage('Prepare') {
       steps {
         sh 'echo "prepare"'
-        sh 'sed -i \'s/$paramVisibilidad/${params.visibilidad}/g\' script.sh'
       }
     }
     stage('Connect') {
       steps {
         echo "Visibilidad: ${params.visibilidad}"
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
-        sh 'docker exec -i toolkit_running bash -c "sed -i s/$paramVisibilidad/${params.visibilidad}/g script.sh"'
         sh 'docker exec -i toolkit_running bash -c "./script.sh"'
         sh 'ls -ltr'
         sh 'pwd'
