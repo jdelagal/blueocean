@@ -25,10 +25,10 @@ pipeline {
       }
     }
     stage('Connect') {
+      def pVisibilidad = ${params.visibilidad}"
       steps {
         echo "Visibilidad: ${params.visibilidad}"
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
-        def pVisibilidad = ${params.visibilidad}"
         sh 'docker exec -i toolkit_running bash -c "./script.sh factoriaustglobal"'
         sh 'ls -ltr'
         sh 'pwd'
