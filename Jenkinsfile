@@ -24,7 +24,6 @@ pipeline {
         sh 'echo "prepare"'
       }
     }
-
     stage('Connect') {
       steps {
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
