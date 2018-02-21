@@ -22,6 +22,7 @@ pipeline {
     stage('Prepare') {
       steps {
         sh 'echo "prepare"'
+        sh 'sed -i \'s/$paramVisibilidad/${params.visibilidad}/g\' script.sh'
       }
     }
     stage('Connect') {
