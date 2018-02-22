@@ -3,8 +3,10 @@ pipeline {
   stages {
     stage('Example') {
       steps {
-        varExample=${params.PERSON}
-        echo "Hello " $varExample
+        echo "Hello ${params.PERSON}" 
+        ARG var
+        ENV var=${params.PERSON}
+        echo "Hello " $var
       }
     }
     stage('Build') {
