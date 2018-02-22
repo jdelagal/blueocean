@@ -4,9 +4,6 @@ pipeline {
     stage('Example') {
       steps {
         echo "Hello ${params.PERSON}" 
-        ARG var
-        ENV var=${params.PERSON}
-        echo "Hello " $var
       }
     }
     stage('Build') {
