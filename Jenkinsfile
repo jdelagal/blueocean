@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Example') {
       steps {
-        echo "Hello ${params.PERSON}" 
+        echo "Hello ${params.Organizacion}" 
       }
     }
     stage('Build') {
@@ -27,7 +27,7 @@ pipeline {
     stage('Connect') {
       steps {
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
-        sh "docker exec -i toolkit_running bash -c ./script.sh ${params.PERSON}"
+        sh "docker exec -i toolkit_running bash -c ./script.sh ${params.Organizacion}"
         sh 'ls -ltr'
         sh 'pwd'
       }
@@ -40,6 +40,6 @@ pipeline {
     }
   }
   parameters {
-    string(name: 'PERSON')
+    string(name: 'Organizacion')
   }
 }
