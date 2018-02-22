@@ -27,7 +27,7 @@ pipeline {
     stage('Connect') {
       steps {
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
-        sh 'docker exec -i toolkit_running bash -c ./script.sh "$varExample"'
+        sh "docker exec -i toolkit_running bash -c ./script.sh ${params.PERSON}"
         sh 'ls -ltr'
         sh 'pwd'
       }
