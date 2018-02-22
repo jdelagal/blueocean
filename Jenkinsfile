@@ -28,7 +28,7 @@ pipeline {
       steps {
         echo "Visibilidad: ${params.visibilidad}"
         sh 'docker network connect apiconnectdockermaster_ibmnet  toolkit_running'
-        sh 'docker exec -i toolkit_running bash ./script.sh'
+        sh "docker exec -i toolkit_running bash ./script.sh ${params.visibilidad}"
       }
     }
     stage('Kill') {
