@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Example') {
       steps {
-        echo "Hello ${params.Organizacion}" 
+        echo "Hello ${params.Organizacion}"
       }
     }
     stage('Build') {
@@ -14,7 +14,6 @@ pipeline {
         sh 'docker build -t toolkit -f Dockerfile .'
       }
     }
-    
     stage('Run') {
       steps {
         sh 'docker run -d --name toolkit_running -u root -it toolkit'
