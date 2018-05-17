@@ -1,3 +1,4 @@
+apic login --username $2  --server apim --password $3
 echo "yes" | apic && echo "no" | apic
 
 a='s/visibilidad/'
