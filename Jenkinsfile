@@ -40,6 +40,6 @@ pipeline {
     }
   }
   parameters {
-    string(defaultValue: 'false', description: 'visibilidad por organizacion',name: 'Organizacion')
+    string(defaultValue: 'false', description: 'visibilidad por organizacion', name: 'Organizacion')
   }
 }
